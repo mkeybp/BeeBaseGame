@@ -37,7 +37,7 @@ namespace BeeGame
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            //spriteBatch.Draw(sprite, position, null, Color.White, 0, origin, 1, SpriteEffects.None, 1);
         }
         public abstract void LoadContent(ContentManager content);
 

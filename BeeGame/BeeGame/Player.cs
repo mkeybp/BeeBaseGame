@@ -11,24 +11,15 @@ using System.Threading.Tasks;
 
 namespace BeeGame
 {
-    class Drone : GameObject
+    class Player : GameObject
     {
-        private Vector2 baseA;
-        private Vector2 flowerA;
-        private Vector2 flowerB;
-        private Vector2 flowerC;
-
-        public Drone(Vector2 position)
+        public Player()
         {
-            //baseA = new Vector2(0, 0);
-            //position = baseA;
-            //this.position = position;
+
         }
         public override void LoadContent(ContentManager content)
         {
-            sprites = new Texture2D[1];
-            sprites[0] = content.Load<Texture2D>("Bee");
-            sprite = sprites[0];
+            sprite = content.Load<Texture2D>("playerguy");
         }
 
         public override void Update(GameTime gameTime)

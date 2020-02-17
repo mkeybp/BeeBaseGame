@@ -1,6 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BeeGame
 {
@@ -11,6 +18,8 @@ namespace BeeGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        public List<GameObject> gameObjects = new List<GameObject>();
 
         public GameWorld()
         {
@@ -39,6 +48,13 @@ namespace BeeGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObject.LoadContent(Content);
+            }
+
+            gameObjects.Add(new Drone(new Vector2(100, 100)));
 
             // TODO: use this.Content to load your game content here
         }
@@ -76,6 +92,17 @@ namespace BeeGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            spriteBatch.Begin();
+
+
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObject.Draw(spriteBatch);
+            }
+
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
